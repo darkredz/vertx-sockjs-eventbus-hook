@@ -107,10 +107,12 @@ Here is some options you can use.
 * or use `-cp` option when you run the verticle.
 
 Now, you can run the verticle like:
-
+```
 samples/verticle> vertx run BridgeServer.java
-
+```
 You can also compile the jar along with your app's source code and vertx run the verticle.
 
 If you installed it with `vertx install` you can run the verticle with `-cp` without compiling the module into your app source.
+```
 samples/verticle> vertx run BridgeServer.java -cp "classes:mods/com.darkredz.sockjs-eventbus-hook-v1.0"
+```
