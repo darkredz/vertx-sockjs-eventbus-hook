@@ -5,6 +5,12 @@ import org.vertx.java.core.json.JsonObject;
 import org.vertx.java.core.sockjs.SockJSSocket;
 import com.darkredz.vertx.sockjs.EventBusBridgeHook;
 
+/**
+ * EventBusBridge class which accept a hook instance to handle event bus bridge events.
+ * @author <a href="http://darkredz.com/">Leng Sheng Hong</a>
+ * @version 1.0
+ * @since 1.0
+ */
 public class EventBusBridge extends org.vertx.java.core.sockjs.EventBusBridge {
   protected EventBusBridgeHook hook;
   
@@ -25,10 +31,20 @@ public class EventBusBridge extends org.vertx.java.core.sockjs.EventBusBridge {
   
   // Hook
   // ==============================
+  /**
+   * Set hook object
+   * @param hook
+   * @since 1.0
+   */
   public void setHook(EventBusBridgeHook hook) {
     this.hook = hook;
   }
   
+  /**
+   * Get hook object
+   * @return
+   * @since 1.0
+   */
   public EventBusBridgeHook getHook() {
     return hook;
   }
@@ -38,6 +54,7 @@ public class EventBusBridge extends org.vertx.java.core.sockjs.EventBusBridge {
   /**
    * The socket has been closed
    * @param sock The socket
+   * @since 1.0
    */
   protected void handleSocketClosed(SockJSSocket sock) {
     if(hook != null) {
@@ -52,6 +69,7 @@ public class EventBusBridge extends org.vertx.java.core.sockjs.EventBusBridge {
    * @param msg The message
    * @param address The address the message is being sent/published to
    * @return true To allow the send/publish to occur, false otherwise
+   * @since 1.0
    */
   protected boolean handleSendOrPub(SockJSSocket sock, boolean send, JsonObject msg, String address) {
 	if(hook != null) {
@@ -65,6 +83,7 @@ public class EventBusBridge extends org.vertx.java.core.sockjs.EventBusBridge {
    * @param sock The socket
    * @param address The address
    * @return true to let the registration occur, false otherwise
+   * @since 1.0
    */
   protected boolean handleRegister(SockJSSocket sock, String address) {
     if(hook != null) {
@@ -77,6 +96,7 @@ public class EventBusBridge extends org.vertx.java.core.sockjs.EventBusBridge {
    * Client is unregistering a handler
    * @param sock The socket
    * @param address The address
+   * @since 1.0
    */
   protected boolean handleUnregister(SockJSSocket sock, String address) {
 	if(hook != null) {
